@@ -1,132 +1,63 @@
 <p align="center">
-  <img src="https://content.umami.is/website/images/umami-logo.png" alt="Umami Logo" width="100">
+  <img src="public/logo.png" alt="SLS Analytics Dashboard Logo" width="100">
 </p>
 
-<h1 align="center">Umami</h1>
+<h1 align="center">Analytics Dashboard</h1>
 
 <p align="center">
-  <i>Umami is a simple, fast, privacy-focused alternative to Google Analytics.</i>
-</p>
-
-<p align="center">
-  <a href="https://github.com/umami-software/umami/releases"><img src="https://img.shields.io/github/release/umami-software/umami.svg" alt="GitHub Release" /></a>
-  <a href="https://github.com/umami-software/umami/blob/master/LICENSE"><img src="https://img.shields.io/github/license/umami-software/umami.svg" alt="MIT License" /></a>
-  <a href="https://github.com/umami-software/umami/actions"><img src="https://img.shields.io/github/actions/workflow/status/umami-software/umami/ci.yml" alt="Build Status" /></a>
-  <a href="https://analytics.umami.is/share/LGazGOecbDtaIwDr/umami.is" style="text-decoration: none;"><img src="https://img.shields.io/badge/Try%20Demo%20Now-Click%20Here-brightgreen" alt="Umami Demo" /></a>
+  <i>Simple, fast, privacy-focused, open-source alternative to Google Analytics. Built on umami + neon.</i>
 </p>
 
 ---
 
 ## 🚀 Getting Started
 
-A detailed getting started guide can be found at [umami.is/docs](https://umami.is/docs/).
+This project is built on [umami](https://github.com/umami-software/umami), a privacy-focused web analytics platform. For general concepts, configuration options, and the tracker API, the upstream documentation at [umami.is/docs](https://umami.is/docs/) applies.
+
+The source code lives at [github.com/sudip0789/Analytics-Dashboard](https://github.com/sudip0789/Analytics-Dashboard).
 
 ---
 
-## 🛠 Installing from Source
+## ☁️ Deploying on Vercel + Neon
 
-### Requirements
+This app is deployed on [Vercel](https://vercel.com) with a [Neon](https://neon.tech) serverless PostgreSQL database.
 
-- A server with Node.js version 18.18+.
-- A PostgreSQL database version v12.14+.
+1. Create a PostgreSQL database on Neon and copy its connection string.
+2. In your Vercel project, set the following environment variables:
 
-### Get the source code and install packages
+   | Variable | Value |
+   | --- | --- |
+   | `DATABASE_URL` | Your Neon connection string (e.g. `postgresql://user:password@ep-xxx.neon.tech/dbname?sslmode=require`) |
+   | `APP_SECRET` | A random string used to sign tokens |
+
+3. Push to the `master` branch. Vercel automatically builds and deploys the app.
+
+The build step creates the database tables on a first-time install and seeds a default login user.
+
+### First login
+
+On a fresh database, a default user is created:
+
+- **Username:** `admin`
+- **Password:** `umami`
+
+> ⚠️ Change this password immediately after your first login (Settings → Profile), or run `pnpm change-password`.
+
+---
+
+## 🛠 Local Development
 
 ```bash
-git clone https://github.com/umami-software/umami.git
-cd umami
 pnpm install
+# create a .env file with DATABASE_URL (Neon) and APP_SECRET
+pnpm dev
 ```
 
-### Configure Umami
-
-Create an `.env` file with the following:
-
-```bash
-DATABASE_URL=connection-url
-```
-
-The connection URL format:
-
-```bash
-postgresql://username:mypassword@localhost:5432/mydb
-```
-
-### Build the Application
-
-```bash
-pnpm run build
-```
-
-The build step will create tables in your database if you are installing for the first time. It will also create a login user with username **admin** and password **umami**.
-
-### Start the Application
-
-```bash
-pnpm run start
-```
-
-By default, this will launch the application on `http://localhost:3000`. You will need to either [proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) requests from your web server or change the [port](https://nextjs.org/docs/api-reference/cli#production) to serve the application directly.
+By default this runs the app on `http://localhost:3000`.
 
 ---
 
-## 🐳 Installing with Docker
+## 🙏 Built On
 
-Umami provides Docker images as well as a Docker compose file for easy deployment.
-
-Docker image:
-
-```bash
-docker pull docker.umami.is/umami-software/umami:latest
-```
-
-Docker compose (Runs Umami with a PostgreSQL database):
-
-```bash
-docker compose up -d
-```
-
----
-
-## 🔄 Getting Updates
-
-To get the latest features, simply do a pull, install any new dependencies, and rebuild:
-
-```bash
-git pull
-pnpm install
-pnpm build
-```
-
-To update the Docker image, simply pull the new images and rebuild:
-
-```bash
-docker compose pull
-docker compose up --force-recreate -d
-```
-
----
-
-## 🛟 Support
-
-<p align="center">
-  <a href="https://github.com/umami-software/umami"><img src="https://img.shields.io/badge/GitHub--blue?style=social&logo=github" alt="GitHub" /></a>
-  <a href="https://twitter.com/umami_software"><img src="https://img.shields.io/badge/Twitter--blue?style=social&logo=twitter" alt="Twitter" /></a>
-  <a href="https://linkedin.com/company/umami-software"><img src="https://img.shields.io/badge/LinkedIn--blue?style=social&logo=linkedin" alt="LinkedIn" /></a>
-  <a href="https://umami.is/discord"><img src="https://img.shields.io/badge/Discord--blue?style=social&logo=discord" alt="Discord" /></a>
-</p>
-
-[release-shield]: https://img.shields.io/github/release/umami-software/umami.svg
-[releases-url]: https://github.com/umami-software/umami/releases
-[license-shield]: https://img.shields.io/github/license/umami-software/umami.svg
-[license-url]: https://github.com/umami-software/umami/blob/master/LICENSE
-[build-shield]: https://img.shields.io/github/actions/workflow/status/umami-software/umami/ci.yml
-[build-url]: https://github.com/umami-software/umami/actions
-[github-shield]: https://img.shields.io/badge/GitHub--blue?style=social&logo=github
-[github-url]: https://github.com/umami-software/umami
-[twitter-shield]: https://img.shields.io/badge/Twitter--blue?style=social&logo=twitter
-[twitter-url]: https://twitter.com/umami_software
-[linkedin-shield]: https://img.shields.io/badge/LinkedIn--blue?style=social&logo=linkedin
-[linkedin-url]: https://linkedin.com/company/umami-software
-[discord-shield]: https://img.shields.io/badge/Discord--blue?style=social&logo=discord
-[discord-url]: https://discord.com/invite/4dz4zcXYrQ
+- [umami](https://github.com/umami-software/umami) — the open-source web analytics platform this project is based on (MIT License).
+- [Neon](https://neon.tech) — serverless PostgreSQL.

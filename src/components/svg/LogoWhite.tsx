@@ -4,9 +4,7 @@ const SvgLogoWhite = ({ style, ...props }: ImgHTMLAttributes<HTMLImageElement>) 
   <img
     src="/logo.png"
     alt="SLS"
-    width={20}
-    height={20}
-    style={{ width: '1em', height: '1em', objectFit: 'contain', ...style }}
+    style={{ height: 32, width: 'auto', objectFit: 'contain', ...style }}
     {...props}
   />
 );

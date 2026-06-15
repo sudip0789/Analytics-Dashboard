@@ -92,9 +92,10 @@ export function SideNav(props: any) {
       >
         <Row paddingX="3" alignItems="center" justifyContent="space-between" flexGrow="1">
           {!isCollapsed && (
-            <IconLabel icon={<Logo />}>
+            <Row alignItems="center" gap="2">
+              <Logo style={{ height: 36 }} />
               <Text weight="bold">Analytics Dashboard</Text>
-            </IconLabel>
+            </Row>
           )}
           <PanelButton />
         </Row>

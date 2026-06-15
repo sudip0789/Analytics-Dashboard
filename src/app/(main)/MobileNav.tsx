@@ -77,9 +77,10 @@ export function MobileNav() {
         }}
       </MobileMenuButton>
       <Row alignItems="center" justifyContent="center" flexGrow={1}>
-        <IconLabel icon={<Logo />} style={{ width: 'auto' }}>
+        <Row alignItems="center" gap="2" style={{ width: 'auto' }}>
+          <Logo style={{ height: 32 }} />
           <Text weight="bold">Analytics Dashboard</Text>
-        </IconLabel>
+        </Row>
       </Row>
     </Grid>
   );

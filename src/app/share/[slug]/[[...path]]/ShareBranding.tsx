@@ -1,7 +1,7 @@
 'use client';
 import { useShare } from '@/components/hooks';
 import { Logo } from '@/components/svg';
-import { Icon, Row, Text } from '@umami/react-zen';
+import { Row, Text } from '@umami/react-zen';
 
 const LOGO_SIZE = { sm: 24, md: 32, lg: 40 };
 const TEXT_SIZE = { sm: 'sm', md: 'base', lg: 'lg' } as const;
@@ -19,9 +19,7 @@ export function ShareBranding({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) {
         {logoImage ? (
           <img src={logoImage} alt={logoName} style={{ height }} />
         ) : (
-          <Icon>
-            <Logo />
-          </Icon>
+          <Logo style={{ height }} />
         )}
         <Text size={TEXT_SIZE[size]} weight="bold">
           {logoName}
