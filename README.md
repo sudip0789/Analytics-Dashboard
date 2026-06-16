@@ -5,7 +5,7 @@
 <h1 align="center">Analytics Dashboard</h1>
 
 <p align="center">
-  <i>Simple, fast, privacy-focused, open-source platform to view analytics of all projects in a single dashboard. Built on umami + neon.</i>
+  <i>Simple, fast, privacy-focused, open-source platform to view analytics of all projects in a single dashboard.</i>
 </p>
 
 ---
